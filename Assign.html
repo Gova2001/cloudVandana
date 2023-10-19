@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Survey Form</title> 
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin-top: 80px;
+           
+           
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        form{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Survey Form</h2>
+        <form id="surveyForm">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" required>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" required>
+
+            <label for="country">Country:</label>
+            <select id="country" required>
+                <option value="India">India</option>
+                <option value="Pak">Pakistan</option>
+                <option value="Qatar">Qatar</option>
+                
+            </select>
+
+            <label>Gender:</label>
+            <input type="checkbox" id="male" name="gender" value="Male"> Male
+            <input type="checkbox" id="female" name="gender" value="Female"> Female
+
+            <label for="profession">Profession:</label>
+            <input type="text" id="profession" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="mobileNumber">Mobile Number:</label>
+            <input type="tel" id="mobileNumber" required><br><br>
+
+            <button type="button" onclick="submitForm()">Submit</button><br><br>
+            <button type="button" onclick="resetForm()">Reset</button>
+        </form>
+    </div>
+
+    <script>
+        function submitForm() {
+            
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const dob = document.getElementById("dob").value;
+            const country = document.getElementById("country").value;
+            const genderElements = document.getElementsByName("gender");
+            const gender = Array.from(genderElements).filter(e => e.checked).map(e => e.value).join(", ");
+            const profession = document.getElementById("profession").value;
+            const email = document.getElementById("email").value;
+            const mobileNumber = document.getElementById("mobileNumber").value;
+
+          
+            const popupMessage = `First Name: ${firstName}\nLast Name: ${lastName}\nDate of Birth: ${dob}\nCountry: ${country}\nGender: ${gender}\nProfession: ${profession}\nEmail: ${email}\nMobile Number: ${mobileNumber}`;
+
+            alert(popupMessage);
+
+            
+            resetForm();
+        }
+
+        function resetForm() {
+            document.getElementById("surveyForm").reset();
+        }
+    </script>
+</body>
+</html>
